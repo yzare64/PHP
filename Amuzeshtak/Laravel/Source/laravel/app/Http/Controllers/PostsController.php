@@ -17,7 +17,7 @@ class PostsController extends Controller
     {
 //        $posts= Post::simplePaginate(1);
        // $posts= Post::paginate(1);
-        $posts= Post::all();
+        $posts= Post::paginate(5);
         return view('posts.index')->with('posts',$posts);
     }
 
@@ -144,7 +144,7 @@ class PostsController extends Controller
 
     public function trash()
     {
-        $posts=Post::onlyTrashed()->get();
+        $posts=Post::onlyTrashed()->paginate(5);
         return view('posts.index')->with('posts',$posts);
     }
 
