@@ -1,0 +1,2 @@
+https://www.roxo.ir/debug-php-with-xdebug-part-1آشنایی با Xdebug و آموزش نصب و استفاده از آن
+https://virgool.io/@MamadAliBlog/%D8%A8%D9%87%D8%AA%D8%B1%DB%8C%D9%86-%D8%AF%DB%8C%D8%A8%D8%A7%DA%AF%D8%B1-%D8%A8%D8%B1%D8%A7%DB%8C-php-%D9%86%D8%B5%D8%A8-%D9%88-%D8%B1%D8%A7%D9%87-%D8%A7%D9%86%D8%AF%D8%A7%D8%B2%DB%8C-xdebug-%D8%A8%D8%B1%D8%A7%DB%8C-phpstorm-owzhnb64oyhd
