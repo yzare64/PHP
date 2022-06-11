@@ -13,6 +13,8 @@
         </div>
 
         @endif
+
+    </div>
     <div class="card-body">
         <form action="{{route('posts.store')}}" method="post" enctype="multipart/form-data">
           @csrf

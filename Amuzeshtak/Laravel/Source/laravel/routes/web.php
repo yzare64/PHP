@@ -20,3 +20,9 @@ Route::get('posts-restore/{id}',[PostsController::class,'restore'])->name('posts
 Route::post('ckeditor/image_upload',[PostsController::class,'upload'])->name('posts.upload');
 
 
+
+Auth::routes();
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
