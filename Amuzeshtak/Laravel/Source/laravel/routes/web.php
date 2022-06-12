@@ -21,7 +21,7 @@ Route::post('ckeditor/image_upload',[PostsController::class,'upload'])->name('po
 
 
 
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
