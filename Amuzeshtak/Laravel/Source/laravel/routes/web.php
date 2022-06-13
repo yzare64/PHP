@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PostsCreated;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,7 @@ Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+Route::get('/mail',function (){
+    Mail::to('y.zare64@gmail.com')->send(new PostsCreated());
+});
