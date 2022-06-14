@@ -128,7 +128,7 @@
                                     <div class="form-group position-relative">
                                         <label>رمز عبور <span class="text-danger">*</span></label>
                                         <i data-feather="key" class="fea icon-sm icons"></i>
-                                        <input type="password" class="form-control pl-5 @error('password') is-invalid @enderror" placeholder="رمز عبور" value="{{old('password')}}" required="" >
+                                        <input type="password" class="form-control pl-5 @error('password') is-invalid @enderror" placeholder="رمز عبور" value="{{old('password')}}" name="password" required="" >
                                         @error('password')
                                         <span class="text-danger small mt-2">{{$message}}</span>
                                         @enderror
@@ -138,10 +138,7 @@
                                     <div class="form-group position-relative">
                                         <label>تکرار رمز عبور <span class="text-danger">*</span></label>
                                         <i data-feather="key" class="fea icon-sm icons"></i>
-                                        <input type="password" class="form-control pl-5 @error('password_confirmation') is-invalid @enderror" placeholder="تکرار رمز عبور" value="{{old('password_confirmation')}}" required="" >
-                                        @error('password_confirmation')
-                                        <span class="text-danger small mt-2">{{$message}}</span>
-                                        @enderror
+                                        <input type="password" class="form-control pl-5 @error('password_confirmation') is-invalid @enderror" placeholder="تکرار رمز عبور" value="{{old('password_confirmation')}}" name="password_confirmation" required="" >
                                     </div>
                                 </div>
                                 <div class="col-md-12">
