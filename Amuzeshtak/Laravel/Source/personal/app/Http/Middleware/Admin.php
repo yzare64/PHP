@@ -18,7 +18,7 @@ class Admin
     {
         if(auth()->user()->role != 'admin')
         {
-            return redirect(route('index'));
+            return abort(404);
         }
         return $next($request);
     }

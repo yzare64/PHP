@@ -8,10 +8,21 @@
             </a>
         </div>
         <div class="buy-button">
-            <a href="{{route('login')}}">
-                <div class="btn btn-primary login-btn-primary">ورود</div>
-                <div class="btn btn-light login-btn-light">ورود</div>
-            </a>
+
+            @auth()
+              <form action="{{route('logout')}}" method="post">
+                  @csrf
+                  <button type="submit" class="btn btn-danger">خروج</button>
+
+              </form>
+            @else
+                <a href="{{route('login')}}">
+                    <div class="btn btn-primary login-btn-primary">ورود</div>
+                    <div class="btn btn-light login-btn-light">ورود</div>
+                </a>
+            @endauth
+
+
         </div><!--end login button-->
         <!-- End Logo container-->
         <div class="menu-extras">
