@@ -45,7 +45,7 @@ class CategoriesController extends Controller
             'name'=>$request->name,
         ]);
         session()->flash('success','دسته بندی با موفقیت اضافه شد');
-        return redirect(route('categories.index'));
+        return redirect(route('admin.categories.index'));
 
 
     }
@@ -67,9 +67,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return  view('admin.categories.edit')->with('category',$category);
     }
 
     /**
@@ -79,9 +79,19 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $this->validate($request,[
+            'name'=>['required','max:255'],
+        ]);
+
+        $category->update([
+            'name'=>$request->name
+        ]);
+
+        session()->flash('success','دسته بندی با موفقیت ویرایش شد');
+        return  redirect(route('categories.index'));
+
     }
 
     /**
