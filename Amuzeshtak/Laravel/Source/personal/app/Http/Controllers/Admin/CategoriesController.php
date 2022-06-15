@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -14,7 +15,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index');
+        $categories=Category::all();
+        return view('admin.categories.index')->with('categories',$categories);
     }
 
     /**
@@ -35,7 +37,17 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name'=>['required','max:255'],
+        ]);
+
+        Category::create([
+            'name'=>$request->name,
+        ]);
+        session()->flash('success','دسته بندی با موفقیت اضافه شد');
+        return redirect(route('categories.index'));
+
+
     }
 
     /**

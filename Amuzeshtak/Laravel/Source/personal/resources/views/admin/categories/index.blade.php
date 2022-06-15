@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="container">
-
+            @if(session()->has('success'))
+                <div class="alert-success text-right">{{session()->get('success')}}</div>
+                @endif
                 <div class="card">
                     <div class="card-header text-right">
                         دسته بندی
@@ -21,12 +23,26 @@
                         </tr>
                         </thead>
                             <tbody>
+                            @forelse($categories as $category)
                             <tr>
-                              <td>1</td>
-                              <td>1</td>
-                              <td>1</td>
-                              <td>1</td>
+                              <td>{{$category->id}}</td>
+                              <td>{{$category->name}}</td>
+                                <td>
+                                    <a href="{{route('categories.edit',$category->id)}}" class="btn btn-primary btn-sm shadow">ویرایش</a>
+                                </td>
+                                <td>
+                                    <form action="{{route('categories.destroy',$category->id)}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger btn-sm shadow">حذف</button>
+                                    </form>
+                                </td>
                             </tr>
+                            @empty
+                                <div class="alert alert-info text-right">
+                                    در حال حاضر دسته بندی وجود ندارد
+                                </div>
+                            @endforelse
                             </tbody>
                         </table>
                     </div>
