@@ -44,7 +44,7 @@
 
 @font-face {
   font-family: 'iran';
-  src: url("../fonts/IRANSansXFaNum-Medium.woff2");
+  src: url("../fonts/IRANSansWeb(FaNum)_Medium.woff2");
 }
 
 .bg-soft-primary {
@@ -1656,7 +1656,7 @@ button:not(:disabled) {
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 20px ;
 }
 
 .form-group label {

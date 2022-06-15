@@ -43,8 +43,8 @@
 }
 
 @font-face {
-  font-family: 'iran';
-  src: url("../fonts/IRANSansXFaNum-Medium.woff2");
+  font-family: 'iran' ;
+  src: url("../fonts/IRANSansWeb(FaNum)_Medium.woff2");
 }
 
 .bg-soft-primary {

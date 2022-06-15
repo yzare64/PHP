@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -76,7 +77,23 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-10 " dir="rtl" >
+                        @yield('content')
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="{{route('categories.index')}}">
+                                    دسته بندی ها
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </main>
     </div>
 </body>
