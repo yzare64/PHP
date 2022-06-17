@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\TagsController;
+use App\Http\Controllers\Admin\PostsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,4 +25,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth','admin'])->group(function (){
 Route::resource('categories',CategoriesController::class);
 Route::resource('tags',TagsController::class);
+Route::resource('posts',PostsController::class);
 });

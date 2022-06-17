@@ -94,6 +94,11 @@
                                     برچسب ها
                                 </a>
                             </li>
+                            <li class="list-group-item">
+                                <a href="{{route('posts.index')}}">
+                                   مقالات
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
