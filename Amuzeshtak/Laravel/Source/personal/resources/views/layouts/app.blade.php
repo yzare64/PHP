@@ -89,6 +89,11 @@
                                     دسته بندی ها
                                 </a>
                             </li>
+                            <li class="list-group-item">
+                                <a href="{{route('tags.index')}}">
+                                    برچسب ها
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class CategoriesController extends Controller
+class TagsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories=Category::all();
-        return view('admin.categories.index')->with('categories',$categories);
+        $tags=Tag::all();
+        return view('admin.tags.index')->with('tags',$tags);
     }
 
     /**
@@ -26,7 +27,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        return view('admin.tags.create');
     }
 
     /**
@@ -35,19 +36,16 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Tag $tag)
     {
         $this->validate($request,[
-            'name'=>['required','max:255'],
+            'name'=>['required','max:255']
         ]);
-
-        Category::create([
-            'name'=>$request->name,
+        Tag::create([
+            'name'=>$request->name
         ]);
-        session()->flash('success','دسته بندی با موفقیت اضافه شد');
-        return redirect(route('categories.index'));
-
-
+        session()->flash('success','برچسب با موفقیت ایجاد شد');
+        return  redirect(route('tags.index'));
     }
 
     /**
@@ -67,9 +65,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Tag $tag)
     {
-        return  view('admin.categories.edit')->with('category',$category);
+        return view('admin.tags.edit')->with('tag',$tag);
     }
 
     /**
@@ -79,19 +77,16 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Tag $tag)
     {
         $this->validate($request,[
             'name'=>['required','max:255'],
         ]);
-
-        $category->update([
+        $tag->update([
             'name'=>$request->name
         ]);
-
-        session()->flash('success','دسته بندی با موفقیت ویرایش شد');
-        return  redirect(route('categories.index'));
-
+        session()->flash('success','برچسب با موفقیت ویرایش شد');
+        return redirect(route('tags.index'));
     }
 
     /**
@@ -100,10 +95,10 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Tag $tag)
     {
-        $category->delete();
-        session()->flash('success','دسته بندی با موفقیت حذف گردید');
-        return  redirect(route('categories.index'));
+        $tag->delete();
+        session()->flash('success','برچسب با موفقیت حذف شد');
+        return  redirect(route('tags.index'));
     }
 }
