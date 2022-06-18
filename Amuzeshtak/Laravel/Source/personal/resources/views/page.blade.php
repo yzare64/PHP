@@ -11,7 +11,7 @@
                             <img src="{{asset('storage/'.$post->image)}}" class="img-fluid rounded-md shadow-md" alt="">
                             <div class="d-flex mt-3 align-items-center justify-content-between">
                                 <p> نویسنده این مطلب : {{$post->user->name}} </p>
-                                <p> آخرین بروزرسانی : {{$post->updated_at}} </p>
+                                <p> آخرین بروزرسانی : {{$v}} </p>
                             </div>
                         </div>
                         <p class="text-muted">
