@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -57,9 +58,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return  view('admin.users.edit')->with('user',$user);
     }
 
     /**
@@ -69,9 +70,25 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $this->validate($request,[
+            'name'=>['required'],
+            'email'=>['required'],
+            'role'=>['required']
+        ]);
+        if(!empty($request->password))
+        {
+            $user->password=Hash::make($request->password);
+            $user->save;
+        }
+        $user->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'role'=>$request->role
+        ]);
+        session()->flash('success','کاربر با موفقیت ویرایش شد');
+        return  redirect(route('users.index'));
     }
 
     /**
@@ -80,8 +97,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        session()->flash('success','کاربر مورد نظر با موفقیت حذف شد ');
+        return  redirect(route('users.index'));
+
     }
 }

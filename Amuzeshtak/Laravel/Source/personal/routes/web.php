@@ -24,8 +24,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware(['auth','admin'])->group(function (){
-Route::resource('categories',CategoriesController::class);
-Route::resource('tags',TagsController::class);
-Route::resource('posts',PostsController::class);
-Route::resource('users',UsersController::class);
+Route::resource('categories',CategoriesController::class)->except('show');
+Route::resource('tags',TagsController::class)->except('show');
+Route::resource('posts',PostsController::class)->except('show');
+Route::resource('users',UsersController::class)->except(['show','create','store']);
 });
