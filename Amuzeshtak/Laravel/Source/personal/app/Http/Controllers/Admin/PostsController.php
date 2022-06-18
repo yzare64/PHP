@@ -137,9 +137,14 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        Storage::delete($post->image);
+        $post->tags()->detach();
+        $post->delete();
+
+        session()->flash('success','مقاله با موفقیت حذف گردید');
+        return  redirect(route('posts.index'));
     }
 
     public function slug($title)
