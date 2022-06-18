@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+    protected  $fillable=['category_id','user_id','title','slug','description','image'];
 
     public function category()
     {
@@ -17,5 +18,10 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function isTag($tagID)
+    {
+      return in_array($tagID,$this->tags->pluck('id')->toArray());
     }
 }

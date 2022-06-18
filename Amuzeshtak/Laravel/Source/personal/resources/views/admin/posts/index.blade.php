@@ -17,6 +17,7 @@
                             <th>ردیف</th>
                             <th>دسته بندی</th>
                             <th>عنوان</th>
+                            <th>توضیحات</th>
                             <th>تصویر</th>
                             <th>ویرایش</th>
                             <th>حذف</th>
@@ -27,8 +28,12 @@
                             @forelse($posts as $post)
                             <tr>
                               <td>{{$post->id}}</td>
-                              <td>{{$post->category}}</td>
-                              <td>{{$tag->title}}</td>
+                              <td>{{$post->category->name}}</td>
+                              <td>{{$post->title}}</td>
+                              <td>{{$post->description}}</td>
+                              <td>
+                                  <img src="{{asset('storage/'.$post->image)}}" alt="" width="40" height="60">
+                              </td>
                                 <td>
                                     <a href="{{route('posts.edit',$post->id)}}" class="btn btn-primary btn-sm shadow">ویرایش</a>
                                 </td>

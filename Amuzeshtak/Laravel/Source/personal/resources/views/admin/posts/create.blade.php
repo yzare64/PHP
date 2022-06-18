@@ -9,7 +9,7 @@
             </div>
 
             <div class="card-body text-right">
-                <form action="{{route('posts.store')}}" method="post">
+                <form action="{{route('posts.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <select name="category_id" class="form-control">
@@ -19,24 +19,30 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <select name="tags" class="form-control" multiple>
+                        <select name="tags[]" class="form-control" multiple>
                             @foreach($tags as $tag)
                             <option value="{{$tag->id}}">{{$tag->name}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control @error('title') is-invalid @enderror"  placeholder="عنوان مقاله خود را وارد کنید" name="name"  value="{{old('title')}}">
+                        <input type="text" class="form-control @error('title') is-invalid @enderror"  placeholder="عنوان مقاله خود را وارد کنید" name="title"  value="{{old('title')}}">
                         @error('title')
                         <span class="text-danger small">{{$message}}</span>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <textarea name="description" class="form-control" cols="2" rows="5" placeholder="متن مقاله را وارد نمایید"></textarea>
+                        <textarea name="description"  class="form-control @error('description')  is-invalid @enderror" cols="2" rows="5" placeholder="متن مقاله را وارد نمایید">{{old('description')}}</textarea>
+                       @error('description')
+                           <span class="text-danger small">{{$message}}</span>
+                           @enderror
                         </textarea>
                     </div>
                     <div class="form-group">
                         <input type="file" class="form-control" name="image">
+                        @error('image')
+                        <span class="text-danger small">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <button class="btn btn-success " style="float: left" >افزودن</button>

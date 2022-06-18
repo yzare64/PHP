@@ -19,6 +19,7 @@ class PostsController extends Controller
     public function index()
     {
         $posts=Post::all();
+
         return view('admin.posts.index')->with('posts',$posts);
     }
 
@@ -42,7 +43,29 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request,[
+            'category_id'=>['required'],
+            'title'=>['required'],
+            'description'=>['required'],
+            'image'=>['required','image','mimes:png,jpg,jpeg']
+        ]);
+        $slug=$this->slug($request->title);
+       $post= Post::create([
+            'category_id'=>$request->category_id,
+            'user_id'=>auth()->user()->id,
+            'title'=>$request->title,
+            'slug'=>$slug,
+            'description'=>$request->description,
+            'image'=>$request->image->store('posts')
+        ]);
+        if($request->tags)
+        {
+            $post->tags()->attach($request->tags);
+
+        }
+        session()->flash('success','مقاله شما با موفقیت اضافه شد');
+        return  redirect(route('posts.index'));
     }
 
     /**
@@ -62,9 +85,12 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+//        dd($post->tags->pluck('id')->toArray());
+        $categories=Category::all();
+        $tags=Tag::all();
+        return  view('admin.posts.edit')->with(['post'=>$post,'categories'=>$categories,'tags'=>$tags]);
     }
 
     /**
@@ -88,5 +114,12 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function slug($title)
+    {
+        $ex=explode(' ', $title);
+        return $im=implode('-',$ex);
+
     }
 }
