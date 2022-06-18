@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 class PostsController extends Controller
@@ -100,9 +101,34 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $this->validate($request,[
+            'category_id'=>['required'],
+            'title'=>['required'],
+            'description'=>['required'],
+        ]);
+        $slug=$this->slug($request->title);
+
+        $post->update([
+            'category_id'=>$request->category_id,
+            'title'=>$request->title,
+            'slug'=>$slug,
+            'description'=>$request->description,
+
+        ]);
+        if($request->hasFile('image'))
+        {
+            Storage::delete($post->image);
+            $post->image=$request->image->store('posts');
+            $post->save();
+        }
+        if($request->tags)
+        {
+            $post->tags()->sync($request->tags);
+        }
+        session()->flash('success','مقاله مورد نظر با موفقیت ویرایش شد ');
+        return  redirect(route('posts.index'));
     }
 
     /**
