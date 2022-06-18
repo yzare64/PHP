@@ -45,127 +45,28 @@
             </div><!--end row-->
 
             <div class="row projects-wrapper">
-                <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 business">
-                    <div class="card blog border-0 work-container work-classic shadow rounded-md overflow-hidden">
-                        <img src="{{asset('images/landing/bg.png')}}" class="img-fluid">
-                        <div class="card-body">
-                            <div class="content">
-                                <a href="{{route('page')}}" class="badge badge-primary">برنامه نویسی</a>
-                                <h5 class="mt-3"><a href="page.html" class="text-dark title">آینده برنامه نویسی</a></h5>
-                                <p class="text-muted">بررسی آینده برنامه نویسی و مزایای آن بر زندگی</p>
-                                <a href="page.html" class="text-primary h6">ادامه مطلب <i data-feather="arrow-right" class="fea icon-sm"></i></a>
+                @forelse($posts as $post)
+                    <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 business">
+                        <div class="card blog border-0 work-container work-classic shadow rounded-md overflow-hidden">
+                            <img src="{{asset('storage/'.$post->image)}}" class="img-fluid work-image" alt="">
+                            <div class="card-body">
+                                <div class="content">
+                                    <a href="#" class="badge badge-success">{{$post->category->name}}</a>
+                                    <h5 class="mt-3"><a href="{{route('page',$post->id)}}" class="text-dark title">{{$post->title}}</a></h5>
+                                    <p class="text-muted">
+                                        {{Str::limit($post->description,35,'...')}}
+                                    </p>
+                                    <a href="{{route('page',$post->id)}}" class="text-primary h6">ادامه مطلب <i data-feather="arrow-right" class="fea icon-sm"></i></a>
+                                </div>
                             </div>
                         </div>
+                    </div><!--end col-->
+                @empty
+                    <div class="alert alert-info text-right">
+                        در حال حاظر مقاله ای وجود ندارد
                     </div>
-                </div><!--end col-->
+                @endforelse
 
-                <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 marketing">
-                    <div class="card blog border-0 work-container work-classic shadow rounded-md overflow-hidden">
-                        <img src="{{asset('images/landing/bg1.png')}}" class="img-fluid work-image" alt="">
-                        <div class="card-body">
-                            <div class="content">
-                                <a href="javascript:void(0)" class="badge badge-warning">تکنولوژی</a>
-                                <h5 class="mt-3"><a href="page-case-detail.html" class="text-dark title">چرایی اعتیاد به شبکه های اجتماعی</a></h5>
-                                <p class="text-muted">بررسی عمیق ابعاد تاثیر مخرب استفاده</p>
-                                <a href="javascript:void(0)" class="text-primary h6">ادامه مطلب <i data-feather="arrow-right" class="fea icon-sm"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end col-->
-
-                <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 finance">
-                    <div class="card blog border-0 work-container work-classic shadow rounded-md overflow-hidden">
-                        <img src="{{asset('images/landing/bg1.png')}}" class="img-fluid work-image" alt="">
-                        <div class="card-body">
-                            <div class="content">
-                                <a href="javascript:void(0)" class="badge badge-success">سرور</a>
-                                <h5 class="mt-3"><a href="page-case-detail.html" class="text-dark title">بررسی و تحلیل داده های سرور</a></h5>
-                                <p class="text-muted">چرا تحلیل درست سرور نیاز است</p>
-                                <a href="javascript:void(0)" class="text-primary h6">ادامه مطلب <i data-feather="arrow-right" class="fea icon-sm"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end col-->                    <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 business">
-                    <div class="card blog border-0 work-container work-classic shadow rounded-md overflow-hidden">
-                        <img src="images/landing/bg.png" class="img-fluid work-image" alt="">
-                        <div class="card-body">
-                            <div class="content">
-                                <a href="javascript:void(0)" class="badge badge-primary">برنامه نویسی</a>
-                                <h5 class="mt-3"><a href="page-case-detail.html" class="text-dark title">آینده برنامه نویسی</a></h5>
-                                <p class="text-muted">بررسی آینده برنامه نویسی و مزایای آن بر زندگی</p>
-                                <a href="javascript:void(0)" class="text-primary h6">ادامه مطلب <i data-feather="arrow-right" class="fea icon-sm"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end col-->
-
-                <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 marketing">
-                    <div class="card blog border-0 work-container work-classic shadow rounded-md overflow-hidden">
-                        <img src="{{asset('images/landing/bg1.png')}}" class="img-fluid work-image" alt="">
-                        <div class="card-body">
-                            <div class="content">
-                                <a href="javascript:void(0)" class="badge badge-warning">تکنولوژی</a>
-                                <h5 class="mt-3"><a href="page-case-detail.html" class="text-dark title">چرایی اعتیاد به شبکه های اجتماعی</a></h5>
-                                <p class="text-muted">بررسی عمیق ابعاد تاثیر مخرب استفاده</p>
-                                <a href="javascript:void(0)" class="text-primary h6">ادامه مطلب <i data-feather="arrow-right" class="fea icon-sm"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end col-->
-
-                <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 finance">
-                    <div class="card blog border-0 work-container work-classic shadow rounded-md overflow-hidden">
-                        <img src="{{asset('images/landing/bg1.png')}}" class="img-fluid work-image" alt="">
-                        <div class="card-body">
-                            <div class="content">
-                                <a href="javascript:void(0)" class="badge badge-success">سرور</a>
-                                <h5 class="mt-3"><a href="page-case-detail.html" class="text-dark title">بررسی و تحلیل داده های سرور</a></h5>
-                                <p class="text-muted">چرا تحلیل درست سرور نیاز است</p>
-                                <a href="javascript:void(0)" class="text-primary h6">ادامه مطلب <i data-feather="arrow-right" class="fea icon-sm"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end col-->                    <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 business">
-                    <div class="card blog border-0 work-container work-classic shadow rounded-md overflow-hidden">
-                        <img src="{{asset('images/landing/bg.png')}}" class="img-fluid work-image" alt="">
-                        <div class="card-body">
-                            <div class="content">
-                                <a href="javascript:void(0)" class="badge badge-primary">برنامه نویسی</a>
-                                <h5 class="mt-3"><a href="page-case-detail.html" class="text-dark title">آینده برنامه نویسی</a></h5>
-                                <p class="text-muted">بررسی آینده برنامه نویسی و مزایای آن بر زندگی</p>
-                                <a href="javascript:void(0)" class="text-primary h6">ادامه مطلب <i data-feather="arrow-right" class="fea icon-sm"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end col-->
-
-                <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 marketing">
-                    <div class="card blog border-0 work-container work-classic shadow rounded-md overflow-hidden">
-                        <img src="{{asset('images/landing/bg1.png')}}" class="img-fluid work-image" alt="">
-                        <div class="card-body">
-                            <div class="content">
-                                <a href="javascript:void(0)" class="badge badge-warning">تکنولوژی</a>
-                                <h5 class="mt-3"><a href="page-case-detail.html" class="text-dark title">چرایی اعتیاد به شبکه های اجتماعی</a></h5>
-                                <p class="text-muted">بررسی عمیق ابعاد تاثیر مخرب استفاده</p>
-                                <a href="javascript:void(0)" class="text-primary h6">ادامه مطلب <i data-feather="arrow-right" class="fea icon-sm"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end col-->
-
-                <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 finance">
-                    <div class="card blog border-0 work-container work-classic shadow rounded-md overflow-hidden">
-                        <img src="{{asset('images/landing/bg1.png')}}" class="img-fluid work-image" alt="">
-                        <div class="card-body">
-                            <div class="content">
-                                <a href="javascript:void(0)" class="badge badge-success">سرور</a>
-                                <h5 class="mt-3"><a href="page-case-detail.html" class="text-dark title">بررسی و تحلیل داده های سرور</a></h5>
-                                <p class="text-muted">چرا تحلیل درست سرور نیاز است</p>
-                                <a href="javascript:void(0)" class="text-primary h6">ادامه مطلب <i data-feather="arrow-right" class="fea icon-sm"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end col-->
             </div><!--end row-->
         </div><!--end container-->
     </section><!--end section-->

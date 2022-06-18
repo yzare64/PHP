@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\UsersController;
 */
 
 Route::get('/',[IndexController::class,'index'])->name('index');
-Route::get('/post/{id?}',[IndexController::class,'page'])->name('page');
+Route::get('/post/{post}',[IndexController::class,'page'])->name('page');
 
 Auth::routes();
 

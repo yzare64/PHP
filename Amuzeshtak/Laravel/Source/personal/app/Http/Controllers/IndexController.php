@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        $categories = Category::all();
+        $posts=Post::all();
+        return view('welcome')->with(['categories'=>$categories,'posts'=>$posts]);
     }
 
-    public function page($id)
+    public function page(Post $post)
     {
-        return view('page');
+        $categories=Category::all();
+        return view('page')->with(['categories'=>$categories,'post'=>$post]);
     }
 }

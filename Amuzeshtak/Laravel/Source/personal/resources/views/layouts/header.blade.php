@@ -3,8 +3,8 @@
     <div class="container">
         <!-- Logo container-->
         <div>
-            <a class="logo" href="index.html">
-                <span class="text-dark">Learnpars</span>
+            <a class="logo" href="{{route('index')}}">
+                <span class="text-dark">{{env('APP_NAME')}}</span>
             </a>
         </div>
         <div class="buy-button">
@@ -42,10 +42,10 @@
         <div id="navigation">
             <!-- Navigation Menu-->
             <ul class="navigation-menu nav-light">
-                <li><a href="index.html">خانه</a></li>
-                <li><a href="index.html">برنامه نویسی</a></li>
-                <li><a href="index.html">تکنولوژی</a></li>
-                <li><a href="index.html">خانه</a></li>
+                <li><a href="{{route('index')}}">خانه</a></li>
+                @foreach($categories as $category)
+                <li><a href="#">{{$category->name}}</a></li>
+                @endforeach
             </ul><!--end navigation menu-->
             <div class="buy-menu-btn d-none">
                 <a href="{{route('login')}}" target="_blank" class="btn btn-primary">ورود</a>
