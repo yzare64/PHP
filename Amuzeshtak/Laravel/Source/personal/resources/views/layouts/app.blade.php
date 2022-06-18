@@ -99,6 +99,11 @@
                                    مقالات
                                 </a>
                             </li>
+                            <li class="list-group-item">
+                                <a href="{{route('users.index')}}">
+                                    کاربران
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

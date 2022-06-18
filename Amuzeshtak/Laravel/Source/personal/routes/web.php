@@ -5,6 +5,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\PostsController;
+use App\Http\Controllers\Admin\UsersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,4 +27,5 @@ Route::middleware(['auth','admin'])->group(function (){
 Route::resource('categories',CategoriesController::class);
 Route::resource('tags',TagsController::class);
 Route::resource('posts',PostsController::class);
+Route::resource('users',UsersController::class);
 });
