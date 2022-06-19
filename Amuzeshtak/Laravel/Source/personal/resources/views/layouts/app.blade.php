@@ -89,6 +89,21 @@
                                     دسته بندی ها
                                 </a>
                             </li>
+                            <li class="list-group-item">
+                                <a href="{{route('tags.index')}}">
+                                    برچسب ها
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{route('posts.index')}}">
+                                   مقالات
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{route('users.index')}}">
+                                    کاربران
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
