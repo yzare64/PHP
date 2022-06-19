@@ -117,7 +117,7 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
-<<<<<<< HEAD
+
         $category=Category::withTrashed()->find($id);
         if($category->trashed())
         {
@@ -131,10 +131,10 @@ class CategoriesController extends Controller
             session()->flash('success','دسته بندی با موفقیت به سطل اشغال انتقال یافت');
             return redirect(route('categories.index'));
         }
-=======
+
         $category->delete();
         session()->flash('success','دسته بندی با موفقیت حذف گردید');
         return  redirect(route('categories.index'));
->>>>>>> c0b7ba358e33eb2c1bdf55825cf947cb17be46c1
+
     }
 }
