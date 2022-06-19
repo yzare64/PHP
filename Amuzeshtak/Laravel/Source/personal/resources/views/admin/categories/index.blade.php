@@ -9,6 +9,7 @@
                     <div class="card-header text-right">
                         دسته بندی
                         <a href="{{route('categories.create')}}" class="btn btn-success btn-sm " style="float: left" >ایجاد دسته بندی</a>
+                        <a href="{{route('categories.trash')}}" class="btn btn-success btn-sm " style="float: left" >حذف شده ها</a>
                     </div>
 
                     <div class="card-body">
@@ -27,9 +28,16 @@
                             <tr>
                               <td>{{$category->id}}</td>
                               <td>{{$category->name}}</td>
+                                @if($category->trashed())
                                 <td>
-                                    <a href="{{route('categories.edit',$category->id)}}" class="btn btn-primary btn-sm shadow">ویرایش</a>
+                                    <a href="{{route('categories.restore',$category->id)}}" class="btn btn-primary btn-sm shadow">بازگردانی</a>
                                 </td>
+
+                                @else
+                                    <td>
+                                        <a href="{{route('categories.edit',$category->id)}}" class="btn btn-primary btn-sm shadow">ویرایش</a>
+                                    </td>
+                                @endif
                                 <td>
                                     <form action="{{route('categories.destroy',$category->id)}}" method="post">
                                         @csrf
