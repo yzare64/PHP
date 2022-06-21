@@ -23,4 +23,10 @@ class IndexController extends Controller
         $categories=Category::all();
         return view('page')->with(['categories'=>$categories,'post'=>$post,'v'=>$v]);
     }
+
+    public function category(Category $category)
+    {
+        $categories=Category::all();
+        return view('category')->with(['categories'=>$categories,'category'=>$category]);
+    }
 }

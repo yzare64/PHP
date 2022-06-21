@@ -45,13 +45,13 @@
             </div><!--end row-->
 
             <div class="row projects-wrapper">
-                @forelse($posts as $post)
+                @forelse($category->posts as $post)
                     <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 business">
                         <div class="card blog border-0 work-container work-classic shadow rounded-md overflow-hidden">
                             <img src="{{asset('storage/'.$post->image)}}" class="img-fluid work-image" alt="">
                             <div class="card-body">
                                 <div class="content">
-                                    <a href="#" class="badge badge-success">{{$post->category->name}}</a>
+                                    <a href="{{route('category',$post->category->id)}}" class="badge badge-success">{{$post->category->name}}</a>
                                     <h5 class="mt-3"><a href="{{route('page',$post->id)}}" class="text-dark title">{{$post->title}}</a></h5>
                                     <p class="text-muted">
                                         {{Str::limit($post->description,35,'...')}}

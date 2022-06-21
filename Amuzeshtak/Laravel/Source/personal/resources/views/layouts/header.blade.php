@@ -44,7 +44,7 @@
             <ul class="navigation-menu nav-light">
                 <li><a href="{{route('index')}}">خانه</a></li>
                 @foreach($categories as $category)
-                <li><a href="#">{{$category->name}}</a></li>
+                <li><a href="{{route('category',$category->id)}}">{{$category->name}}</a></li>
                 @endforeach
             </ul><!--end navigation menu-->
             <div class="buy-menu-btn d-none">
