@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Verta;
 
@@ -28,5 +29,11 @@ class IndexController extends Controller
     {
         $categories=Category::all();
         return view('category')->with(['categories'=>$categories,'category'=>$category]);
+    }
+
+    public function tag(Tag $tag)
+    {
+        $categories=Category::all();
+        return view('tag')->with(['categories'=>$categories,'tag'=>$tag]);
     }
 }

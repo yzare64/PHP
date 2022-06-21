@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\UsersController;
 Route::get('/',[IndexController::class,'index'])->name('index');
 Route::get('/post/{post}',[IndexController::class,'page'])->name('page');
 Route::get('/category/{category}',[IndexController::class,'category'])->name('category');
+Route::get('/tag/{tag}',[IndexController::class,'tag'])->name('tag');
 
 Auth::routes();
 

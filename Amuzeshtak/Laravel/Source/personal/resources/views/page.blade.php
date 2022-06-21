@@ -20,7 +20,7 @@
 
                         <div>
                          @foreach($post->tags as $tag)
-                                <a href="#" class="btn btn-primary btn-sm">{{$tag->name}}</a>
+                                <a href="{{route('tag',$tag->id)}}" class="btn btn-primary btn-sm">{{$tag->name}}</a>
                             @endforeach
                         </div>
 
