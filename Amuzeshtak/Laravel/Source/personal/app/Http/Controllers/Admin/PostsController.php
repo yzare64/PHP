@@ -152,4 +152,23 @@ class PostsController extends Controller
         return $im=implode('-',$ex);
 
     }
+
+    public function upload(Request $request)
+    {
+        if($request->hasFile('upload')) {
+            $filenamewithextension= $request->file('upload')->getClientOriginalName();
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+            $filenametostore = $filename.'_'.time().'.'.$extension;
+
+
+            $request->file('upload')->move(public_path('images'),  $filenametostore);
+
+            $url = asset('images/' .  $filenametostore);
+            return response()->json(['fileName' =>  $filenametostore, 'uploaded'=> 1, 'url' => $url]);
+
+
+        }
+
+    }
 }

@@ -15,7 +15,7 @@
                             </div>
                         </div>
                         <p class="text-muted">
-                            {{$post->description}}
+                            {!! strip_tags($post->description) !!}
                         </p>
 
                         <div>

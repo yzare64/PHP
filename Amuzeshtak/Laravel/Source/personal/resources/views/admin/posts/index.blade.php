@@ -30,7 +30,7 @@
                               <td>{{$post->id}}</td>
                               <td>{{$post->category->name}}</td>
                               <td>{{$post->title}}</td>
-                              <td>{{$post->description}}</td>
+                              <td>{!! $post->description !!}</td>
                               <td>
                                   <img src="{{asset('storage/'.$post->image)}}" alt="" width="40" height="60">
                               </td>

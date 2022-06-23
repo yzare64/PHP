@@ -48,7 +48,7 @@
                                     <a href="{{route('category',$post->category->id)}}" class="badge badge-success">{{$post->category->name}}</a>
                                     <h5 class="mt-3"><a href="{{route('page',$post->id)}}" class="text-dark title">{{$post->title}}</a></h5>
                                     <p class="text-muted">
-                                        {{Str::limit($post->description,35,'...')}}
+                                        {!! strip_tags(Str::limit($post->description,100,'...')) }
                                     </p>
                                     <a href="{{route('page',$post->id)}}" class="text-primary h6">ادامه مطلب <i data-feather="arrow-right" class="fea icon-sm"></i></a>
                                 </div>

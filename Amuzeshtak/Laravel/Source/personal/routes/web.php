@@ -22,6 +22,7 @@ Route::get('/post/{post}',[IndexController::class,'page'])->name('page');
 Route::get('/category/{category}',[IndexController::class,'category'])->name('category');
 Route::get('/tag/{tag}',[IndexController::class,'tag'])->name('tag');
 
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -30,5 +31,6 @@ Route::resource('categories',CategoriesController::class)->except('show');
 Route::resource('tags',TagsController::class)->except('show');
 Route::resource('posts',PostsController::class)->except('show');
 Route::resource('users',UsersController::class)->except(['show','create','store']);
+Route::post('ckeditor/image_upload',[PostsController::class,'upload'])->name('posts.upload');
 
 });

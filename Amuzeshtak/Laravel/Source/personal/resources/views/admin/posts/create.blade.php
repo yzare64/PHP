@@ -32,7 +32,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <textarea name="description"  class="form-control @error('description')  is-invalid @enderror" cols="2" rows="5" placeholder="متن مقاله را وارد نمایید">{{old('description')}}</textarea>
+                        <textarea name="description" id="description" class="form-control @error('description')  is-invalid @enderror" cols="2" rows="5" placeholder="متن مقاله را وارد نمایید">{{old('description')}}</textarea>
                        @error('description')
                            <span class="text-danger small">{{$message}}</span>
                            @enderror
