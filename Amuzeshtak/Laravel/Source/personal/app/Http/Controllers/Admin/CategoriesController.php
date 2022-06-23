@@ -94,20 +94,8 @@ class CategoriesController extends Controller
 
     }
 
-    public function trash(Request $request)
-    {
-        $categories=Category::onlyTrashed()->paginate(5);
-        return view('admin.categories.index')->with('categories',$categories);
 
-    }
 
-    public function restore($id)
-    {
-        $category = Category::withTrashed()->find($id);
-        $category->restore();
-        session()->flash('success','دسته بندی با موفقیت بازگردانی شد');
-        return redirect(route('categories.trash'));
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -118,23 +106,10 @@ class CategoriesController extends Controller
     public function destroy(Category $category)
     {
 
-        $category=Category::withTrashed()->find($id);
-        if($category->trashed())
-        {
-            $category->forceDelete();
-            session()->flash('success','دسته بندی با موفقیت حذف گردید');
-            return redirect(route('categories.trash'));
-        }
-        else
-        {
-            $category->delete();
-            session()->flash('success','دسته بندی با موفقیت به سطل اشغال انتقال یافت');
-            return redirect(route('categories.index'));
-        }
 
-        $category->delete();
-        session()->flash('success','دسته بندی با موفقیت حذف گردید');
-        return  redirect(route('categories.index'));
+            $category->delete();
+            session()->flash('success','دسته بندی با موفقیت حذف گردید');
+            return  redirect(route('categories.index'));
 
     }
 }

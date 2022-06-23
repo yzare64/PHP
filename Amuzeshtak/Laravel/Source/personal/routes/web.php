@@ -26,11 +26,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware(['auth','admin'])->group(function (){
-
-Route::resource('categories',CategoriesController::class);
-Route::get('trash',[CategoriesController::class,'trash'])->name('categories.trash');
-    Route::get('restore',[CategoriesController::class,'restore'])->name('categories.restore');
-
 Route::resource('categories',CategoriesController::class)->except('show');
 Route::resource('tags',TagsController::class)->except('show');
 Route::resource('posts',PostsController::class)->except('show');

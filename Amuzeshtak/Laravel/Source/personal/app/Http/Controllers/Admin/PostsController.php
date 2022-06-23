@@ -20,7 +20,6 @@ class PostsController extends Controller
     public function index()
     {
         $posts=Post::all();
-
         return view('admin.posts.index')->with('posts',$posts);
     }
 

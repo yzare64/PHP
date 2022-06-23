@@ -14,7 +14,7 @@ class IndexController extends Controller
     {
 
         $categories = Category::all();
-        $posts=Post::all();
+        $posts=Post::searched()->get();
         return view('welcome')->with(['categories'=>$categories,'posts'=>$posts]);
     }
 
