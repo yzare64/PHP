@@ -29,6 +29,34 @@
                             <h6 class="text-dark">علی</h6>
                             <p class="text-muted h6 font-italic"> بیا این کفشا رو بپوش…پسرک کفشا رو پوشید و خوشحال رو به پیر مرد کرد و گفت: شما خدایید؟! پیر مرد لبش را گزید و گفت نه! پسرک گفت پس دوست خدایی، چون من دیشب فقط به خدا گفتم كه کفش ندارم…</p>
                         </div>
+                        @auth
+                        <div class="col-10 mt-3 ">
+                            @if(session()->has('success'))
+                                <div class="alert alert-success">
+                                    {{session()->get('success')}}
+                                </div>
+                                @endif
+                        <form action="{{route('comment',$post->id)}}" method="post">
+                            @csrf
+
+
+                                    <div class="form-group">
+                                <textarea name="contents"  cols="30" rows="5" class="form-control @error('content')  is-invalid @enderror" >
+                                </textarea>
+                                        @error('content')
+                                        <span class="text-danger small">{{$message}}</span>
+                                        @enderror
+                            @else
+                                <div class="alert alert-info">
+                                    برای ارسال نظر ابتدا وارد شوید
+                                </div>
+                                    </div>
+                            @endauth
+
+                            <div class="form-group">
+                                <button class="btn btn-success btn-sm" type="submit" >ثبت نظر</button>
+                            </div>
+                        </form>
                     </div>
                 </div><!--end col-->
             </div><!--end row-->

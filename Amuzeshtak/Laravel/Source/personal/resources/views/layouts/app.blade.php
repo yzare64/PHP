@@ -106,6 +106,11 @@
                                     کاربران
                                 </a>
                             </li>
+                            <li class="list-group-item">
+                                <a href="{{route('comments.index')}}">
+                                    نظرات
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

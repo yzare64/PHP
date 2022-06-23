@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\CommentsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +22,8 @@ Route::get('/',[IndexController::class,'index'])->name('index');
 Route::get('/post/{post}',[IndexController::class,'page'])->name('page');
 Route::get('/category/{category}',[IndexController::class,'category'])->name('category');
 Route::get('/tag/{tag}',[IndexController::class,'tag'])->name('tag');
+Route::post('/comment/{post}',[IndexController::class,'comment'])->name('comment');
+
 
 
 Auth::routes();
@@ -32,5 +35,5 @@ Route::resource('tags',TagsController::class)->except('show');
 Route::resource('posts',PostsController::class)->except('show');
 Route::resource('users',UsersController::class)->except(['show','create','store']);
 Route::post('ckeditor/image_upload',[PostsController::class,'upload'])->name('posts.upload');
-
+Route::resource('comments',CommentsController::class);
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -35,5 +36,23 @@ class IndexController extends Controller
     {
         $categories=Category::all();
         return view('tag')->with(['categories'=>$categories,'tag'=>$tag]);
+    }
+
+    public function comment(Request $request,Post $post)
+    {
+        $this->validate($request,[
+            'contents'=>['required'],
+        ]);
+
+        $comment=Comment::create([
+            'user_id'=>auth()->user()->id,
+            'post_id'=>$post->id,
+            'contents'=>$request->contents,
+        ]);
+
+        session()->flash('success','نظر شما ثبت شد و به زودی تایید خواهد شد');
+        return back();
+
+
     }
 }
