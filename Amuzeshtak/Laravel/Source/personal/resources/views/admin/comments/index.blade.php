@@ -14,8 +14,9 @@
                 <table class="table table-borderless text-center">
                     <thead>
                     <tr>
-                        <th>نام</th>
-                        <th>مقاله</th>
+                        <th>ردیف</th>
+                        <th>نام کاربر</th>
+                        <th>نام مقاله</th>
                         <th>وضعیت</th>
                         <th>ویرایش</th>
                         <th>حذف</th>
@@ -25,14 +26,21 @@
                     <tbody>
                     @forelse($comments  as $comment)
                         <tr>
-                            <td>{{$comment->content}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->role}}</td>
+                            <td>{{$comment->id}}</td>
+                            <td>{{$comment->user->name}}</td>
+                            <td>{{$comment->post->title}}</td>
                             <td>
-                                <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary btn-sm shadow">ویرایش</a>
+                                @if($comment->status==0)
+                                    <span class="text-danger">تایید نشده</span>
+                                @else
+                                    <span class="text-success">تایید شده</span>
+                                @endif
                             </td>
                             <td>
-                                <form action="{{route('users.destroy',$user->id)}}" method="post">
+                                <a href="{{route('comments.edit',$comment->id)}}" class="btn btn-primary btn-sm shadow">ویرایش</a>
+                            </td>
+                            <td>
+                                <form action="{{route('comments.destroy',$comment->id)}}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger btn-sm shadow">حذف</button>
