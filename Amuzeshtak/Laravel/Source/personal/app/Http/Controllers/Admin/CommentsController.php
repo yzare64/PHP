@@ -57,9 +57,10 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comment $comment)
     {
-        //
+
+        return  view('admin.comments.edit')->with('comment',$comment);
     }
 
     /**
@@ -69,9 +70,22 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comment $comment)
     {
-        //
+        $this->validate($request,[
+            'contents'=>['required'],
+        ]);
+
+        $comment->update([
+            'contents'=>$request->contents,
+                'status'=>$request->status
+
+            ]
+        );
+
+        session()->flash('success','نظر با موفقیت ویرایش شد');
+        return  redirect(route('comments.index'));
+
     }
 
     /**
