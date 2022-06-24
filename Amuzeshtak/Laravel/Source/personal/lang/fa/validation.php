@@ -169,6 +169,6 @@ return [
         'title'                 => 'عنوان',
         'username'              => 'نام کاربری',
         'year'                  => 'سال',
-        'contents'              =>'نظر'
+        'contents'              =>'متن'
     ],
 ];

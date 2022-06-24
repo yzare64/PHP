@@ -46,9 +46,9 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Comment $comment)
     {
-        //
+        return  view('admin.comments.show',compact('comment'));
     }
 
     /**
@@ -99,5 +99,25 @@ class CommentsController extends Controller
         $comment->delete();
         session()->flash('success','نظر با موفقیت حذف شد');
         return  redirect(route('comments.index'));
+    }
+
+    public function reply(Request $request,Comment $comment)
+    {
+    $this->validate($request,[
+        'contents'=>['required']
+    ]);
+
+    Comment::create([
+        'user_id'=>auth()->user()->id,
+        'post_id'=>$comment->post_id,
+        'contents'=>$request->contents,
+        'child'=>$comment->id,
+        'status'=>1
+    ]);
+    session()->flash('success','پاسخ مورد نظر با موفقیت ایجاد شد');
+    return redirect(route('comments.index'));
+
+
+
     }
 }

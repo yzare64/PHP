@@ -36,4 +36,5 @@ Route::resource('posts',PostsController::class)->except('show');
 Route::resource('users',UsersController::class)->except(['show','create','store']);
 Route::post('ckeditor/image_upload',[PostsController::class,'upload'])->name('posts.upload');
 Route::resource('comments',CommentsController::class);
+Route::post('comment-reply/{comment}',[CommentsController::class,'reply'])->name('comments.reply');
 });

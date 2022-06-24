@@ -20,6 +20,7 @@
                         <th>وضعیت</th>
                         <th>ویرایش</th>
                         <th>حذف</th>
+                        <th>نمایش</th>
 
                     </tr>
                     </thead>
@@ -45,6 +46,9 @@
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger btn-sm shadow">حذف</button>
                                 </form>
+                            </td>
+                           <td>
+                            <a href="{{route('comments.show',$comment->id)}}" class="btn btn-secondary btn-sm shadow">پاسخ</a>
                             </td>
                         </tr>
                     @empty
