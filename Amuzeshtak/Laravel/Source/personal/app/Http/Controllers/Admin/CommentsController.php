@@ -94,8 +94,10 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+        session()->flash('success','نظر با موفقیت حذف شد');
+        return  redirect(route('comments.index'));
     }
 }

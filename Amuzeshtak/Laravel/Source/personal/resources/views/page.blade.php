@@ -25,10 +25,18 @@
                         </div>
 
                         <h4 class="my-4">نظرات کاربران</h4>
+                        @forelse($post->comments as $comment)
                         <div class="p-4 bg-light">
-                            <h6 class="text-dark">علی</h6>
-                            <p class="text-muted h6 font-italic"> بیا این کفشا رو بپوش…پسرک کفشا رو پوشید و خوشحال رو به پیر مرد کرد و گفت: شما خدایید؟! پیر مرد لبش را گزید و گفت نه! پسرک گفت پس دوست خدایی، چون من دیشب فقط به خدا گفتم كه کفش ندارم…</p>
+                            <h6 class="text-dark">{{$comment->user->name}}</h6>
+                            <p class="text-muted h6 font-italic">
+                                {{$comment->contents}}
+                            </p>
                         </div>
+                        @empty
+                            <div class="alert.alert-success">
+                                در حال حاضر نظری وجود ندارد
+                            </div>
+                        @endforelse
                         @auth
                         <div class="col-10 mt-3 ">
                             @if(session()->has('success'))

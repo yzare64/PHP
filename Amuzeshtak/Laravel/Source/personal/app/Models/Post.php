@@ -31,7 +31,7 @@ class Post extends Model
 
     public function scopeSearched($query)
     {
-        
+
         $search=request()->query('search');
         if(!$search)
         {
@@ -42,5 +42,10 @@ class Post extends Model
             return $query->where('title','LIKE',"%{$search}%");
         }
 
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->where('status',1);
     }
 }
