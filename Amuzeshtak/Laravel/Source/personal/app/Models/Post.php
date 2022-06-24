@@ -46,6 +46,6 @@ class Post extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class)->where('status',1);
+        return $this->hasMany(Comment::class)->where('status',1)->where('child',null);
     }
 }

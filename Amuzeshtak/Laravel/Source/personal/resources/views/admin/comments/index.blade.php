@@ -47,8 +47,18 @@
                                     <button type="submit" class="btn btn-danger btn-sm shadow">حذف</button>
                                 </form>
                             </td>
-                           <td>
-                            <a href="{{route('comments.show',$comment->id)}}" class="btn btn-secondary btn-sm shadow">پاسخ</a>
+                            <td>
+                            @if($comment->child!=null)
+                            <span class="btn-dark btn-sm shadow">
+                                پاسخ
+                                <span class="badge badge-success">-</span>
+                            </span>
+
+                            @else
+                                    <a href="{{route('comments.show',$comment->id)}}" class="btn btn-dark btn-sm shadow">
+                                        پاسخ
+                                    </a>
+                            @endif
                             </td>
                         </tr>
                     @empty

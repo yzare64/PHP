@@ -29,9 +29,19 @@
                         <div class="p-4 bg-light">
                             <h6 class="text-dark">{{$comment->user->name}}</h6>
                             <p class="text-muted h6 font-italic">
-                                {{$comment->contents}}
+                                {!!  strip_tags($comment->contents) !!}
                             </p>
                         </div>
+                        @if($comment->replies->count())
+                            @foreach($comment->replies as $reply)
+                            <div class="p-2 bg-primary rounded">
+                                <h6 class="text-dark">{{$reply->user->name}}</h6>
+                                <p class="text-muted h6 font-italic">
+                                    {!!  strip_tags($comment->contents) !!}
+                                </p>
+                            </div>
+                                @endforeach
+                            @endif
                         @empty
                             <div class="alert.alert-success">
                                 در حال حاضر نظری وجود ندارد
