@@ -44,11 +44,18 @@ class IndexController extends Controller
             'contents'=>['required'],
         ]);
 
+
         $comment=Comment::create([
             'user_id'=>auth()->user()->id,
             'post_id'=>$post->id,
             'contents'=>$request->contents,
         ]);
+
+        if(auth()->user()->role=='admin')
+        {
+            $comment->status=1;
+            $comment->save();
+        }
 
         session()->flash('success','نظر شما ثبت شد و به زودی تایید خواهد شد');
         return back();
