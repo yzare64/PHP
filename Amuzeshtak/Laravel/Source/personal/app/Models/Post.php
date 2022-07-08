@@ -48,4 +48,10 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class)->where('status',1)->where('child',null);
     }
+
+    //change route key
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

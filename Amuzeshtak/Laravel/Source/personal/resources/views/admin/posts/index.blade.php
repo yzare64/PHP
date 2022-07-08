@@ -35,10 +35,10 @@
                                   <img src="{{asset('storage/'.$post->image)}}" alt="" width="40" height="60">
                               </td>
                                 <td>
-                                    <a href="{{route('posts.edit',$post->id)}}" class="btn btn-primary btn-sm shadow">ویرایش</a>
+                                    <a href="{{route('posts.edit',$post->slug)}}" class="btn btn-primary btn-sm shadow">ویرایش</a>
                                 </td>
                                 <td>
-                                    <form action="{{route('posts.destroy',$post->id)}}" method="post">
+                                    <form action="{{route('posts.destroy',$post->slug)}}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger btn-sm shadow">حذف</button>

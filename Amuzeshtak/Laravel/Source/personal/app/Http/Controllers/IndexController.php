@@ -21,6 +21,7 @@ class IndexController extends Controller
 
     public function page(Post $post)
     {
+       // $post=Post::where('slug',$slug)->first();
         $v = new Verta($post->updated_at);
         $categories=Category::all();
         return view('page')->with(['categories'=>$categories,'post'=>$post,'v'=>$v]);

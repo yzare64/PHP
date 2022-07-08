@@ -46,11 +46,11 @@
                             <div class="card-body">
                                 <div class="content">
                                     <a href="#" class="badge badge-success">{{$post->category->name}}</a>
-                                    <h5 class="mt-3"><a href="{{route('page',$post->id)}}" class="text-dark title">{{$post->title}}</a></h5>
+                                    <h5 class="mt-3"><a href="{{route('page',$post->slug)}}" class="text-dark title">{{$post->title}}</a></h5>
                                     <p class="text-muted">
                                         {!! strip_tags(Str::limit($post->description,100,'...')) !!}
                                     </p>
-                                    <a href="{{route('page',$post->id)}}" class="text-primary h6">ادامه مطلب <i data-feather="arrow-right" class="fea icon-sm"></i></a>
+                                    <a href="{{route('page',$post->slug)}}" class="text-primary h6">ادامه مطلب <i data-feather="arrow-right" class="fea icon-sm"></i></a>
                                 </div>
                             </div>
                         </div>

@@ -9,7 +9,7 @@
             </div>
 
             <div class="card-body text-right">
-                <form action="{{route('posts.update' , $post->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('posts.update' , $post->slug)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
