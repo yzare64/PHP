@@ -17,6 +17,10 @@ use App\Http\Controllers\Admin\CommentsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('send-email',function (){
+    Mail::to('info@yaserzare.ir')->send(\App\Mail\SendMail());
+}
+);
 
 Route::get('/',[IndexController::class,'index'])->name('index');
 Route::get('/post/{post}',[IndexController::class,'page'])->name('page');
