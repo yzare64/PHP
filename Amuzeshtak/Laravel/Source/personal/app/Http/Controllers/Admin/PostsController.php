@@ -8,6 +8,8 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\CreatePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 
 
 class PostsController extends Controller
@@ -41,15 +43,8 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
-
-        $this->validate($request,[
-            'category_id'=>['required'],
-            'title'=>['required'],
-            'description'=>['required'],
-            'image'=>['required','image','mimes:png,jpg,jpeg']
-        ]);
         $slug=$this->slug($request->title);
        $post= Post::create([
             'category_id'=>$request->category_id,
@@ -100,13 +95,9 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
     {
-        $this->validate($request,[
-            'category_id'=>['required'],
-            'title'=>['required'],
-            'description'=>['required'],
-        ]);
+
         $slug=$this->slug($request->title);
 
         $post->update([
