@@ -8,6 +8,9 @@
     <title>Email</title>
 </head>
 <body>
+<h1>Contact Info</h1>
+<h3>name: {{ $name  }}</h3>
+<h3>lastname: {{ $lname  }}</h3>
 <p>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam delectus, doloribus dolorum modi praesentium. Eius nobis pariatur quam qui, quia repudiandae soluta. Distinctio facere id laboriosam minus recusandae sint.
 </p>
