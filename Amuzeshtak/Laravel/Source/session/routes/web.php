@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 Route::get('put-session',[SessionController::class,'put']);
 Route::get('get-session',[SessionController::class,'get']);
+Route::get('has-session',[SessionController::class,'has']);

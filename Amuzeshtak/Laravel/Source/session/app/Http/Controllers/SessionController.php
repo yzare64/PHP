@@ -17,5 +17,17 @@ class SessionController extends Controller
         return session()->get('name1','not');
     }
 
+    public function has()
+    {
+        if(session()->has('name1'))
+        {
+            return session()->get('name');
+        }
+        else
+        {
+            return  'Session Does Not Exists';
+        }
+    }
+
 
 }
