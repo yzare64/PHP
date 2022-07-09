@@ -14,7 +14,7 @@ class SessionController extends Controller
 
     public function get()
     {
-        return session()->get('name1','not');
+        return session()->get('name','not');
     }
 
     public function has()
@@ -27,6 +27,13 @@ class SessionController extends Controller
         {
             return  'Session Does Not Exists';
         }
+
+    }
+
+    public function forget()
+    {
+        session()->forget(['name','lname']); // delete session name and lname keys
+
     }
 
 

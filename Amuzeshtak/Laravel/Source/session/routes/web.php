@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('put-session',[SessionController::class,'put']);
-Route::get('get-session',[SessionController::class,'get']);
-Route::get('has-session',[SessionController::class,'has']);
+Route::get('put-session',[SessionController::class,'put']); //put session
+Route::get('get-session',[SessionController::class,'get']); // get session
+Route::get('has-session',[SessionController::class,'has']); //check session
+Route::get('forget-session',[SessionController::class,'forget']); // delete session
