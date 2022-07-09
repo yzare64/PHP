@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\CommentsController;
+use App\Mail\SendMail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +19,7 @@ use App\Http\Controllers\Admin\CommentsController;
 |
 */
 Route::get('send-email',function (){
-    Mail::to('info@yaserzare.ir')->send(\App\Mail\SendMail());
+    Mail::to('info@yaserzare.ir')->send(new SendMail('yaser','zare'));
 }
 );
 
