@@ -8,6 +8,14 @@ class SessionController extends Controller
 {
     public function put()
     {
-        session()->put('name','yaser');
+        session()->put(['lname'=>'zare']);
+
     }
+
+    public function get()
+    {
+        return session()->get('name1','not');
+    }
+
+
 }
