@@ -36,5 +36,12 @@ class SessionController extends Controller
 
     }
 
+    //delete all session
+    public function flush()
+    {
+        session()->flush();
+        return 'session flush';
+    }
+
 
 }
